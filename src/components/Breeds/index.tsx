@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Provider, defaultTheme, View } from "@adobe/react-spectrum";
 
 import BreedsSearch from "./BreedsSearch";
 import { breedsStyle, PAGE_SIZE } from "./helper/config";
@@ -44,13 +43,9 @@ const Breeds = () => {
 
   return (
     <div className="breeds" style={breedsStyle} ref={innerRef}>
-      <Provider theme={defaultTheme} height="100%">
-        <View height="100%">
-          <BreedsSearch
-            data={data}
-          />
-        </View>
-      </Provider>
+      <BreedsSearch
+        data={data}
+      />
     </div>
   );
 };

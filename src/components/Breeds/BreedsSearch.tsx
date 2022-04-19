@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImageLightbox from "../ImageLightbox";
-import { Grid, View, SearchField, Flex } from "@adobe/react-spectrum";
+import { Grid, View, SearchField, Flex, Provider, defaultTheme } from "@adobe/react-spectrum";
 import {
   Cell,
   Column,
@@ -47,6 +47,9 @@ const BreedsList = ({ data }: ListProps) => {
   };
 
   return (
+
+<Provider theme={defaultTheme} height="100%">
+  <View height="100%">
     <Grid
       areas={["header", "content"]}
       columns={["auto"]}
@@ -84,7 +87,7 @@ const BreedsList = ({ data }: ListProps) => {
               </Column>
             )}
           </TableHeader>
-          <TableBody>
+          <TableBody loadingState="loading">
             {filtered.map((item: any, idx: number) => {
               const row = item.breeds[0];
               return (
@@ -94,7 +97,7 @@ const BreedsList = ({ data }: ListProps) => {
                       return (
                         <Cell>
                           <ImageLightbox pic={row["url"]} />
-                          <span className="piclabel">pic # {idx++}</span>
+                          <span className="piclabel">pic # {idx + 1}</span>
                         </Cell>
                       );
                     } else if (key === "name") {
@@ -143,6 +146,9 @@ const BreedsList = ({ data }: ListProps) => {
         </TableView>
       </View>
     </Grid>
+  </View>
+</Provider>
+
   );
 };
 
