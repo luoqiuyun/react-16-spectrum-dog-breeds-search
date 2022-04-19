@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImageLightbox from "../ImageLightbox";
-import { Grid, View } from "@adobe/react-spectrum";
+import { Grid, View, SearchField, Flex } from "@adobe/react-spectrum";
 import {
   Cell,
   Column,
@@ -12,7 +12,6 @@ import {
 
 import { filterBreeds } from "./helper/utils";
 import { columns } from "./helper/config";
-import SearchView from "./SearchView";
 
 export enum Density {
   COMPACT = "compact",
@@ -22,6 +21,7 @@ export enum Density {
 
 const BreedsList = ({ data }: ListProps) => {
   const [search, setSearch] = useState("");
+  const [keywords, setKeywords] = useState("");
   const [idxBase, setIdxBase] = useState(0);
   const [filtered, setFiltered] = useState<object[]>([]);
   const [tableDensity, setTableDensity] = useState(Density.COMPACT);
@@ -37,13 +37,35 @@ const BreedsList = ({ data }: ListProps) => {
     setIdxBase(search === "" ? 0:data.length);
   }, [search, data]);
 
+  const onChange = (value: string) => {
+    setKeywords(value);
+    const searchInput = value.trim();
+    if(searchInput.length > 0 && searchInput.length < 3) return;
+    setTimeout(() => {
+      setSearch(searchInput);
+    }, 1000)
+  };
+
   return (
     <Grid
       areas={["header", "content"]}
       columns={["auto"]}
       rows={["size-1000", "auto"]}
     >
-      <SearchView setSearch={setSearch} />
+      <View gridArea="header">
+        <Flex gap="size-100" alignItems="center" justifyContent="center">
+          <SearchField
+            marginStart={"size-200"}
+            marginBottom={"size-200"}
+            marginTop={"size-200"}
+            width={"size-3600"}
+            aria-label={"Search on page"}
+            placeholder={"Search on page"}
+            value={keywords}
+            onChange={onChange}
+          />
+        </Flex>
+      </View>
       <View gridArea="content">
         <TableView
           aria-label="List of images to apply filters to"
