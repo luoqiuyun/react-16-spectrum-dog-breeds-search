@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from "./config";
+import { PAGE_SIZE, noResults } from "./config";
 
 interface BreedsProps {
   breeds: BreedProps[];
@@ -39,6 +39,7 @@ const filterBreeds = (data: any, filterText: string) => {
     }
     return false;
   });
+  if(!filtered.length) return noResults;
   return filtered.sort(breedsCompare);
 };
 

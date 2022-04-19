@@ -90,6 +90,21 @@ const BreedsList = ({ data }: ListProps) => {
           <TableBody loadingState="loading">
             {filtered.map((item: any, idx: number) => {
               const row = item.breeds[0];
+              
+              if(row["url"] === "no-results") {
+                return (
+                  <Row key="no-results-row">
+                    {(key) => {
+                      if (key === "url") {
+                        return <Cell>{'Breeds search got no results ...'}</Cell>;
+                      } else {
+                        return <Cell>{''}</Cell>;
+                      }
+                    }}
+                  </Row>
+                )
+              }
+
               return (
                 <Row key={`${row.id}-${idxBase + idx}`}>
                   {(key) => {
