@@ -30,17 +30,12 @@ const breedsCompare = (d1: BreedsProps, d2: BreedsProps) => {
 
 const filterBreeds = (data: any, filterText: string) => {
   if (filterText === "") return data;
+  const keywords = filterText.split(/(\s+)/).filter((e) => e.trim().length > 0);
   const filtered = data.filter((item: any) => {
     const { name, bred_for, breed_group, temperament } = item.breeds[0];
-    const attrs =
-      `${name} ${bred_for} ${breed_group} ${temperament}`.toLowerCase();
-    const keywords = filterText
-      .split(/(\s+)/)
-      .filter((e) => e.trim().length > 0);
+    const attrs = `${name} ${bred_for} ${breed_group} ${temperament}`.toLowerCase();
     for (let i = 0; i < keywords.length; i++) {
-      if (attrs.includes(keywords[i].toLowerCase())) {
-        return true;
-      }
+      if (attrs.includes(keywords[i])) return true;
     }
     return false;
   });

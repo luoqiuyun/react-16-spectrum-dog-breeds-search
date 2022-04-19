@@ -24,7 +24,7 @@ const BreedsList = ({ data }: ListProps) => {
   const [keywords, setKeywords] = useState("");
   const [idxBase, setIdxBase] = useState(0);
   const [filtered, setFiltered] = useState<object[]>([]);
-  const [tableDensity, setTableDensity] = useState(Density.COMPACT);
+  const [tableDensity, setTableDensity] = useState(Density.SPACIOUS);
 
   useEffect(() => {
     setTimeout(() => {
@@ -39,7 +39,7 @@ const BreedsList = ({ data }: ListProps) => {
 
   const onChange = (value: string) => {
     setKeywords(value);
-    const searchInput = value.trim();
+    const searchInput = value.trim().toLowerCase();
     if(searchInput.length > 0 && searchInput.length < 3) return;
     setTimeout(() => {
       setSearch(searchInput);
