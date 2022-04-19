@@ -1,0 +1,11 @@
+.App {
+  text-align: left;
+}
+H1 {
+  text-align: center;
+  height: 100px;
+  padding-top: 20px;
+}
+img {
+  object-fit: contain;
+}
