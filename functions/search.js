@@ -5,6 +5,7 @@ async function loadImage(page, limit) {
   var headers = {
     "X-API-KEY": process.env.X_API_KEY,
   };
+  
   var query_params = {
     has_breeds: true,
     mime_types: "jpg,png",
