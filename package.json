@@ -12,7 +12,6 @@
     "@types/node": "^17.0.23",
     "@types/react": "^18.0.4",
     "@types/react-dom": "^18.0.0",
-    "dotenv": "^8.2.0",
     "querystring": "^0.2.1",
     "r2": "^2.0.1",
     "react": "^16.13.1",
