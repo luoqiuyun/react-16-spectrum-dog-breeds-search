@@ -19,10 +19,15 @@ export enum Density {
   REGULAR = "regular",
 }
 
+export enum Loading {
+  IDLE = "idle",
+  LOADING = "loading",
+}
+
 const BreedsList = ({ data }: ListProps) => {
   const [search, setSearch] = useState("");
   const [idxBase, setIdxBase] = useState(0);
-  const [loading, setLoading] = useState("idle");
+  const [loading, setLoading] = useState<Loading>(Loading.IDLE);
   const [keywords, setKeywords] = useState("");
   const [filtered, setFiltered] = useState<object[]>([]);
   const [timeoutId, setTimeoutId] = useState<any>(null);
@@ -35,10 +40,10 @@ const BreedsList = ({ data }: ListProps) => {
   });
 
   useEffect(() => {
-    setLoading("loading");
+    setLoading(Loading.LOADING);
     setIdxBase(search === "" ? 0:data.length);
     setFiltered(filterBreeds(data, search));
-    if(search !== "") setLoading("idle");
+    if(search !== "") setLoading(Loading.IDLE);
   }, [search, data]);
 
   const onChange = (value: string) => {
