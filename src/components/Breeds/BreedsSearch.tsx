@@ -22,7 +22,6 @@ export enum Density {
 
 const BreedsList = ({ data }: ListProps) => {
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState("idle");
   const [idxBase, setIdxBase] = useState(0);
   const [filtered, setFiltered] = useState<object[]>([]);
   const [tableDensity, setTableDensity] = useState(Density.COMPACT);
@@ -34,12 +33,8 @@ const BreedsList = ({ data }: ListProps) => {
   });
 
   useEffect(() => {
-    setLoading("loading");
     setFiltered(filterBreeds(data, search));
     setIdxBase(search === "" ? 0:data.length);
-    setTimeout(() => {
-      setLoading("idle");
-    }, 5000);
   }, [search, data]);
 
   return (

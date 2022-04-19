@@ -3,7 +3,6 @@ import { SearchField, View, Flex, } from "@adobe/react-spectrum";
 
 const SearchView = ({ setSearch }: SearchProps) => {
   const [keywords, setKeywords] = useState("");
-  const [timeoutId, setTimeoutId] = useState();
 
   const onChange = (value: string) => {
     setKeywords(value);
