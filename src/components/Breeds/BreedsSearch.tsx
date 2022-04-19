@@ -20,11 +20,12 @@ export enum Density {
 }
 
 const BreedsList = ({ data }: ListProps) => {
-  const [timeoutId, setTimeoutId] = useState<any>(null);
   const [search, setSearch] = useState("");
-  const [keywords, setKeywords] = useState("");
   const [idxBase, setIdxBase] = useState(0);
+  const [loading, setLoading] = useState("idle");
+  const [keywords, setKeywords] = useState("");
   const [filtered, setFiltered] = useState<object[]>([]);
+  const [timeoutId, setTimeoutId] = useState<any>(null);
   const [tableDensity, setTableDensity] = useState(Density.SPACIOUS);
 
   useEffect(() => {
@@ -34,8 +35,10 @@ const BreedsList = ({ data }: ListProps) => {
   });
 
   useEffect(() => {
-    setFiltered(filterBreeds(data, search));
+    setLoading("loading");
     setIdxBase(search === "" ? 0:data.length);
+    setFiltered(filterBreeds(data, search));
+    if(search !== "") setLoading("idle");
   }, [search, data]);
 
   const onChange = (value: string) => {
@@ -88,7 +91,7 @@ const BreedsList = ({ data }: ListProps) => {
                   </Column>
                 )}
               </TableHeader>
-              <TableBody loadingState="loading">
+              <TableBody loadingState={loading}>
                 {filtered.map((item: any, idx: number) => {
                   const row = item.breeds[0];
 
