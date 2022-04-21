@@ -38,5 +38,12 @@ const noResults = [{
 }];
 
 const PAGE_SIZE = 20;
+const NO_BREED_GROUP = "zero";
 
-export { columns, breedsStyle, PAGE_SIZE, noResults };
+export {
+  columns,
+  breedsStyle,
+  noResults,
+  PAGE_SIZE,
+  NO_BREED_GROUP
+};

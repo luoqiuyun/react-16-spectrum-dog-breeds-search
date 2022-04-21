@@ -1,13 +1,13 @@
-import { PAGE_SIZE, noResults } from "./config";
+import { PAGE_SIZE, NO_BREED_GROUP, noResults } from "./config";
 
 interface BreedsProps {
   breeds: BreedProps[];
   id: string;
 }
+
 interface BreedProps {
   breed_group: string;
 }
-
 
 const shouldLoadMore = (page: number) => {
   const theBreed = `pic # ${page * PAGE_SIZE}`;
@@ -21,8 +21,10 @@ const shouldLoadMore = (page: number) => {
 };
 
 const breedsCompare = (d1: BreedsProps, d2: BreedsProps) => {
-  const a = !!d1.breeds[0].breed_group ? d1.breeds[0].breed_group.toLowerCase():"zero";
-  const b = !!d2.breeds[0].breed_group ? d2.breeds[0].breed_group.toLowerCase():"zero";
+  const group1 = d1.breeds[0].breed_group;
+  const group2 = d2.breeds[0].breed_group;
+  const a = !!group1 ? group1.toLowerCase():NO_BREED_GROUP;
+  const b = !!group2 ? group2.toLowerCase():NO_BREED_GROUP;
   if ( a < b ) return -1;
   if ( a > b ) return 1;
   return 0;
@@ -60,5 +62,3 @@ export {
   filterBreeds,
   formatData
 };
-
-
