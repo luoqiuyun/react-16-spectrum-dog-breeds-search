@@ -37,6 +37,17 @@ const noResults = [{
   height: 1131
 }];
 
+enum Density {
+  COMPACT = "compact",
+  SPACIOUS = "spacious",
+  REGULAR = "regular",
+}
+
+enum Loading {
+  IDLE = "idle",
+  LOADING = "loading",
+}
+
 const PAGE_SIZE = 20;
 const NO_BREED_GROUP = "zero";
 
@@ -44,6 +55,8 @@ export {
   columns,
   breedsStyle,
   noResults,
+  Density,
+  Loading,
   PAGE_SIZE,
-  NO_BREED_GROUP
+  NO_BREED_GROUP,
 };

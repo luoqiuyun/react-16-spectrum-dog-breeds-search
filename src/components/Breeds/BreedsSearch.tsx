@@ -1,28 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ImageLightbox from "../ImageLightbox";
 import { Grid, View, SearchField, Flex, Provider, defaultTheme } from "@adobe/react-spectrum";
-import {
-  Cell,
-  Column,
-  Row,
-  TableBody,
-  TableHeader,
-  TableView
-} from "@react-spectrum/table";
+import { Cell, Column, Row, TableBody, TableHeader, TableView } from "@react-spectrum/table";
 
+import { columns, Density, Loading } from "./helper/config";
 import { filterBreeds } from "./helper/utils";
-import { columns } from "./helper/config";
-
-export enum Density {
-  COMPACT = "compact",
-  SPACIOUS = "spacious",
-  REGULAR = "regular",
-}
-
-export enum Loading {
-  IDLE = "idle",
-  LOADING = "loading",
-}
 
 const BreedsList = ({ data }: ListProps) => {
   const [search, setSearch] = useState("");
