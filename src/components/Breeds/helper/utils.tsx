@@ -9,6 +9,7 @@ interface BreedProps {
   breed_group: string;
 }
 
+// not in use
 const shouldLoadMore = (page: number) => {
   const theBreed = `pic # ${page * PAGE_SIZE}`;
   const spans = document.getElementsByTagName("span");

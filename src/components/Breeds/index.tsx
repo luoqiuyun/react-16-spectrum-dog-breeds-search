@@ -9,6 +9,7 @@ const Breeds = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const innerRef = useRef<HTMLDivElement>(null);
+  /*
   const handleScroll: EventListener = (e: Event) => {
     const target = e.target as HTMLDivElement;
     if (target) {
@@ -16,6 +17,15 @@ const Breeds = () => {
         if (shouldLoadMore(currentPage)) {
           setCurrentPage(currentPage + 1);
         }
+      }
+    }
+  };
+  */
+  const handleScroll: EventListener = () => {
+    const div = innerRef.current;
+    if (!!div) {
+      if (div.scrollTop > (250 * currentPage * 20 - 500)) {
+        setCurrentPage(currentPage + 1);
       }
     }
   };
