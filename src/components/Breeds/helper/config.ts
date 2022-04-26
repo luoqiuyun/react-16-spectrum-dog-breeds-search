@@ -49,6 +49,7 @@ enum Loading {
 }
 
 const PAGE_SIZE = 20;
+const ROW_HEIGHT = 250;
 const NO_BREED_GROUP = "zero";
 
 export {
@@ -58,5 +59,6 @@ export {
   Density,
   Loading,
   PAGE_SIZE,
+  ROW_HEIGHT,
   NO_BREED_GROUP,
 };
